@@ -10,9 +10,6 @@ namespace _15puzzle
 {
     public class Player
     {
-
-        public int Row { get; set; }
-        public int Col { get; set; }
         public Direction GetDirection()
         {
             while(true)
@@ -100,27 +97,6 @@ namespace _15puzzle
             board.PuzzleBoard[emptyTileCoordinates.Value.Item1, emptyTileCoordinates.Value.Item2] = movableTileValue;   // empty tile becomes a full tile
             board.PuzzleBoard[movableTileIndex.Value.Item1, movableTileIndex.Value.Item2] = 0;
         }
-
-
-
-        // accepts a tuple
-        public bool MoveInDirection(Board board, (int, int) number)      // int row, int column
-        {
-            // i = rows; j = columns
-            int r = number.Item1;
-            int c = number.Item2;
-            var direction = GetDirection();
-
-
-            // if user types UP and the checks go through, they can move there
-            if (direction == Direction.Up && c > 0 && board.PuzzleBoard[r, c - 1] == 0) return true;       // neighbour on top
-            if (direction == Direction.Down && c < 3 && board.PuzzleBoard[r, c + 1] == 0) return true;       // neighbour on the bottom
-            if (direction == Direction.Left && r > 0 && board.PuzzleBoard[r - 1, c] == 0) return true;       // neighbour on the left
-            if (direction == Direction.Right && r < 0 && board.PuzzleBoard[r + 1, c] == 0) return true;       // neighbour on the right
-
-            return false;
-        }
-
         public enum Direction { Up, Down, Left, Right};
     }
 }

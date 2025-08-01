@@ -67,21 +67,6 @@ namespace _15puzzle
             return PuzzleBoard;
 
         }
-
-        // checks 4 location. If one of them returns true - the number is movable
-        public bool IsMovable((int, int) number)
-        {
-            int r = number.Item1;
-            int c = number.Item2;
-
-            if (c > 0 && PuzzleBoard[r, c - 1] == 0) return true;       // neighbour on top
-            if (c < 3 && PuzzleBoard[r, c + 1] == 0) return true;       // neighbour on the bottom
-            if (r > 0 && PuzzleBoard[r - 1, c] == 0) return true;       // neighbour on the left
-            if (r < 0 && PuzzleBoard[r + 1, c] == 0) return true;       // neighbour on the right
-
-            return false;
-        }
-
         // if can move up indicates that the cell ABOVE is empty
         public (int, int)? MoveUpCoordinates()
         {
